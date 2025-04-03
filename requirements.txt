@@ -1,0 +1,10 @@
+streamlit
+langchain_core
+langchain_community
+langchain_ollama
+langchain_pinecone
+pinecone-client
+
+# torch==2.4.0
+# transformers==4.46.3
+
