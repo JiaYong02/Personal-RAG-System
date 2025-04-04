@@ -1,5 +1,5 @@
 # Personal-RAG-System
-A personal Retrieval-Augmented Generation (RAG) system built with the DeepSeek-R1 model, Langchain, and Streamlit. This system allows you to upload PDFs to the Pinecone database for document retrieval and leverage DeepSeek-R1 reasoning power for high-quality response
+A personal Retrieval-Augmented Generation (RAG) system built with the DeepSeek-R1 model, Langchain, and Streamlit. This system allows you to upload PDFs to the Pinecone database for document retrieval and leverage DeepSeek-R1 reasoning power for high-quality response.
 
 # Pre-requisites
 Install Ollama on your local machine from the [official website](https://ollama.com/). And then pull the Deepseek model:
