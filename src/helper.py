@@ -1,6 +1,5 @@
-from langchain_community.document_loaders import PyPDFDirectoryLoader, PDFPlumberLoader, PyPDFLoader
+from langchain_community.document_loaders import PDFPlumberLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_ollama import OllamaEmbeddings
 import os 
 import pandas as pd
 
@@ -23,7 +22,6 @@ def load_pdf(path):
     return loader.load()
     
 
-
 # Split text into chunks
 def split_text_chunks(documents):
     text_splitter = RecursiveCharacterTextSplitter(
@@ -41,7 +39,7 @@ def clear_pdfs():
         if os.path.isfile(file_path) and file_name != ".gitkeep":
             os.remove(file_path)
 
-
+# Get all uploaded pdf file name
 def get_uploaded_pdfs():
     file_list = [os.path.splitext(file)[0] for file in os.listdir(pdfs_directory) if file != '.gitkeep'] 
     df = pd.DataFrame(file_list, columns=['File name'])

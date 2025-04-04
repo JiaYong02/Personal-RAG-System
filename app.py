@@ -8,6 +8,7 @@ from langchain_pinecone import PineconeVectorStore
 from langchain_ollama import OllamaLLM
 from langchain_ollama import OllamaEmbeddings
 from src.prompt import *
+from src.model_setting import model, vector_size
 import os
 import pandas as pd
 
@@ -16,8 +17,9 @@ load_dotenv()
 
 PINECONE_API_KEY = os.environ.get('PINECONE_API_KEY')
 
-llm = OllamaLLM(model='deepseek-r1:1.5b')
-embedding = OllamaEmbeddings(model='deepseek-r1:1.5b')
+
+llm = OllamaLLM(model=model)
+embedding = OllamaEmbeddings(model=model)
 
 # Initialize a Pinecone client with  API key
 pc = Pinecone(api_key=PINECONE_API_KEY)
@@ -28,7 +30,7 @@ if not pc.has_index(index_name):
     pc.create_index(
         name=index_name,
         vector_type="dense",
-        dimension=1536, # 3584 for 7b parameter | 1536 for 1.5b parameter
+        dimension=vector_size, 
         metric="cosine",
         spec=ServerlessSpec(
             cloud="aws",
