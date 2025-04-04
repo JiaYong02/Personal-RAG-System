@@ -70,7 +70,11 @@ if uploaded_file and not uploaded_file.name in os.listdir(pdfs_directory):
     
     full_chunks_list = [t.page_content for t in text_chunks]
 
-    docsearch.add_texts(full_chunks_list) # Add documents to the vector store
+    # Upload in batches of 500 to avoid exceeding the limited upload size
+    batch_size = 500
+    for i in range(0, len(full_chunks_list), batch_size):
+        batch = full_chunks_list[i:i + batch_size]
+        docsearch.add_texts(batch)  # Add documents to the vector store
 
 # Create table
 df = get_uploaded_pdfs()
