@@ -19,28 +19,7 @@ def split_text_chunks(documents):
     )
     # get text chunks
     return text_splitter.split_documents(documents)
-    
 
-def setup_pinecone():
-    # set up pinecone db
-    # Initialize a Pinecone client with  API key
-    pc = Pinecone(api_key=PINECONE_API_KEY)
-    index_name = "dense-index"
-
-    if not pc.has_index(index_name):
-        pc.create_index_for_model(
-            name=index_name,
-            cloud="aws",
-            region="us-east-1",
-            embed={
-                "model":"llama-text-embed-v2",
-                "field_map":{"text": "chunk_text"}
-            }
-        )
-
-
-    # Connect to the existing Pinecone index
-    index = pc.Index(index_name)
 
 
 def create_embedding_model():
