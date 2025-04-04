@@ -26,3 +26,10 @@ Install the dependencies using pip:
 ```bash
 pip install -r requirements.txt
 ```
+
+# Run the application
+
+```bash
+streamlit run app.py
+```
+
